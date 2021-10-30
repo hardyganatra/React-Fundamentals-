@@ -2,11 +2,29 @@
 
 <body>
     <div id="root"></div>
-    <script type="module">
+    <script src="https://unpkg.com/react@17.0.0/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17.0.0/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone@7.12.4/babel.js"></script>
+
+    <script type="text/babel">
         const rootElement = document.getElementById('root')
-        const element = document.createElement('div')
-        element.innerText = "Hello World"
-        rootElement.append(element)
+        // const Test = (prop) => {
+        //     return <div>{prop}</div>
+        // }
+        // console.log('test', <Test className="class-1">{false ? <div>Div</div> : <span>SPAN</span>}</Test>);
+        // <Test className="class-01" />
+        const UIElement = ({ children }) => {
+            return <div>{children}</div>
+        }
+        const element =
+            <div className="outer">
+                <UIElement prop={123}>
+                    ABC
+                    <UIElement />
+                </UIElement>
+            </div>
+        console.log(element);
+        ReactDOM.render(element, rootElement)
     </script>
 </body>
 
